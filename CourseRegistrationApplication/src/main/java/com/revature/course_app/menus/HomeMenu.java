@@ -17,9 +17,23 @@ public class HomeMenu extends Menu {
 		System.out.print("Hello!\nWelcome to the course registration application.\n" +
 							"1) Login\n" +
 							"2) Register\n" +
-							"3)Exit\n");
-		shutdown();
-
+							"3) Exit\n");
+		
+		String userSelection = consoleReader.readLine();
+		
+		switch(userSelection) {
+		case "1":
+			router.transfer("/login");
+			break;
+		case "2":
+			router.transfer("/register");
+			break;
+		case "3":
+			shutdown();
+			break;
+		default:
+			System.out.println("You have put an invalid input.\nPlease try again!");
+		}
 	}
 
 }
