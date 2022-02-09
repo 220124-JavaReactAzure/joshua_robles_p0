@@ -36,11 +36,11 @@ public class SRemoveCoursesMenu extends Menu {
 
 			String userSelection = consoleReader.readLine();
 
-			Enrolled newEnrolled = new Enrolled(Integer.parseInt(userSelection),
+			Enrolled enrolled = new Enrolled(Integer.parseInt(userSelection),
 					studentService.getSessionStudent().getStudentId());
 
 			try {
-				enrolledService.registerNewEnrolled(newEnrolled);
+				enrolledService.removeEnrolled(enrolled);
 
 				System.out.println("Sweet success! That course was trash..\n");
 				router.transfer("/s_dashboard");

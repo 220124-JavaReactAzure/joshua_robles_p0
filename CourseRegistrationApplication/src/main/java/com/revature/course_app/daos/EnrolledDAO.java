@@ -133,7 +133,7 @@ public class EnrolledDAO implements CrudDAO<Enrolled> {
 	public boolean delete(Enrolled enrolled) {
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-			String sql = "delete from enrolled where ? and ?";
+			String sql = "delete from enrolled where course_id = ? and student_id = ?";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 

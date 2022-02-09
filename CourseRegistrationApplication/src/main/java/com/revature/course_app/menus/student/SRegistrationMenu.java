@@ -36,6 +36,6 @@ public class SRegistrationMenu extends Menu{
 			System.out.println("Unable to make new student account..");
 		}
 		
-		router.transfer("/s_login");
+		router.transfer("/s_home");
 	}
 }
