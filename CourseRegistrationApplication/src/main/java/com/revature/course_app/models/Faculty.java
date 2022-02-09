@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Faculty implements Serializable {
 
-	private String facultyId;
+	private int facultyId;
 	private String username;
 	private String password;
 
@@ -14,7 +14,7 @@ public class Faculty implements Serializable {
 	}
 
 	// Probably can drop this overloaded method
-	public Faculty(String facultyId, String username, String password) {
+	public Faculty(int facultyId, String username, String password) {
 		super();
 		this.facultyId = facultyId;
 		this.username = username;
@@ -27,11 +27,11 @@ public class Faculty implements Serializable {
 		this.password = password;
 	}
 
-	public String getFacultyId() {
+	public int getFacultyId() {
 		return facultyId;
 	}
 
-	public void setFacultyId(String facultyId) {
+	public void setFacultyId(int facultyId) {
 		this.facultyId = facultyId;
 	}
 
