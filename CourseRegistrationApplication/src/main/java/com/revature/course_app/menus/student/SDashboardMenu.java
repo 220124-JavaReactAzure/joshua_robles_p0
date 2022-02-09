@@ -44,7 +44,7 @@ public class SDashboardMenu extends Menu{
 				break;
 			case "2":
 				System.out.println("View current courses selected:");
-				router.transfer("/s_current_courses");
+				router.transfer("/s_enrolled_courses");
 				break;
 			case "3":
 				studentService.logout();

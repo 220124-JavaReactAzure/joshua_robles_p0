@@ -97,7 +97,7 @@ public class EnrolledDAO implements CrudDAO<Enrolled> {
 			while (resultSet.next()) {
 				Enrolled enrolled = new Enrolled();
 				enrolled.setCourseId(resultSet.getInt("course_id"));
-				enrolled.setStudentId(resultSet.getInt("faculty_id"));
+				enrolled.setStudentId(resultSet.getInt("student_id"));
 
 				enrolledList.add(enrolled);
 			}

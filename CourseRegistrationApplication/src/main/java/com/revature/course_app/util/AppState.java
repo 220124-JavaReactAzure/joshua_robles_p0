@@ -13,6 +13,7 @@ import com.revature.course_app.menus.student.SHomeMenu;
 import com.revature.course_app.menus.student.SLoginMenu;
 import com.revature.course_app.menus.student.SRegistrationMenu;
 import com.revature.course_app.menus.student.courses.SAddCoursesMenu;
+import com.revature.course_app.menus.student.courses.SEnrolledCoursesMenu;
 import com.revature.course_app.menus.student.courses.SViewCoursesMenu;
 import com.revature.course_app.services.CourseService;
 import com.revature.course_app.services.EnrolledService;
@@ -49,6 +50,8 @@ public class AppState {
 		router.addMenu(new SDashboardMenu(consoleReader, router, studentService));
 		router.addMenu(new SViewCoursesMenu(consoleReader, router, studentService, courseService));
 		router.addMenu(new SAddCoursesMenu(consoleReader, router, studentService, courseService, enrolledService));
+		router.addMenu(new SEnrolledCoursesMenu(consoleReader, router, studentService, enrolledService));
+
 	}
 	
 	public void startup() {
