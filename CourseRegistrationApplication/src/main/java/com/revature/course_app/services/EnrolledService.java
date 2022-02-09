@@ -15,26 +15,29 @@ public class EnrolledService {
 		this.enrolledDao = enrolledDao;
 	}
 
-	public Enrolled registerNewCourse(Enrolled newEnrolled) {
+	public Enrolled registerNewEnrolled(Enrolled newEnrolled) {
 		if (!isEnrolledValid(newEnrolled)) {
-			throw new InvalidRequestException("Invalid course data provided");
+			throw new InvalidRequestException("Invalid enrolled data provided");
 		}
 
-		Enrolled persistedCourse = enrolledDao.create(newEnrolled);
+		Enrolled persistedEnrolled = enrolledDao.create(newEnrolled);
 
-		if (persistedCourse == null) {
-			throw new ResourcePersistenceException("The course could not be persisted");
+		if (persistedEnrolled == null) {
+			throw new ResourcePersistenceException("The enrolled could not be persisted");
 		}
 
-		return persistedCourse;
+		return persistedEnrolled;
 	}
 
 	public boolean isEnrolledValid(Enrolled newEnrolled) {
 		if (newEnrolled == null)
 			return false;
-		if (newEnrolled.getCourseId() > 0)
+		if (newEnrolled.getCourseId() < 0)
 			return false;
-		return (newEnrolled.getStudentId() < 0);
+		if (newEnrolled.getStudentId() < 0)
+			return false;
+		
+		return true;
 	}
 	
 	public List<Enrolled> getAllEnrolled() {

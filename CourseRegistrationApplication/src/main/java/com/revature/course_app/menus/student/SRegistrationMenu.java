@@ -3,6 +3,7 @@ package com.revature.course_app.menus.student;
 import java.io.BufferedReader;
 
 import com.revature.course_app.exceptions.AuthenticationException;
+import com.revature.course_app.exceptions.InvalidRequestException;
 import com.revature.course_app.menus.Menu;
 import com.revature.course_app.models.Student;
 import com.revature.course_app.services.StudentService;
@@ -31,8 +32,8 @@ public class SRegistrationMenu extends Menu{
 		try {
 			studentService.registerNewStudent(newStudent);
 			router.transfer("/s_dashboard");
-		} catch(AuthenticationException e) {
-			System.out.println("Wrong password or username..");
+		} catch(InvalidRequestException e) {
+			System.out.println("Unable to make new student account..");
 		}
 		
 		router.transfer("/s_login");

@@ -9,7 +9,6 @@ import com.revature.course_app.services.CourseService;
 import com.revature.course_app.services.StudentService;
 import com.revature.course_app.util.MenuRouter;
 import com.revature.course_app.util.collections.ArrayList;
-import com.revature.course_app.util.collections.List;
 
 public class SViewCoursesMenu extends Menu{
 	
@@ -52,11 +51,11 @@ public class SViewCoursesMenu extends Menu{
 			switch (userSelection) {
 			case "1":
 				System.out.println("View available courses selected:");
-				router.transfer("/s_view_courses");
+				router.transfer("/s_add_courses");
 				break;
 			case "2":
-				System.out.println("Remove courses selected:");
-				router.transfer("/s_remove_courses");
+				System.out.println("Dashboard selected:");
+				router.transfer("/s_dashboard");
 				break;
 			case "3":
 				studentService.logout();

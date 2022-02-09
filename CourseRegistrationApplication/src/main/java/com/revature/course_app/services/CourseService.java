@@ -35,8 +35,8 @@ public class CourseService {
 	
 	public boolean isCourseValid(Course newCourse) {
 		if(newCourse == null) return false;
-		if(newCourse.getCourseId() > 0) return false;
-		if(newCourse.getTeacherId() > 0) return false;
+		if(newCourse.getCourseId() < 0) return false;
+		if(newCourse.getTeacherId() < 0) return false;
 		return newCourse.getCourseName() != null || !newCourse.getCourseName().trim().equals("");
 	}
 	
