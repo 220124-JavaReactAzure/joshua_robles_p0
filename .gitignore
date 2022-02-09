@@ -1,1 +1,7 @@
 /.metadata/
+resources/
+bin/
+*.class
+doc/
+target/
+*.properties
