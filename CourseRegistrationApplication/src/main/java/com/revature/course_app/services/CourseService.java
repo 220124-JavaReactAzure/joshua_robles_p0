@@ -29,6 +29,11 @@ public class CourseService {
 		return persistedCourse;
 	}
 	
+	//TODO bad not checking if valid course
+	public void removeCourseUsingCIdAndFId(int CourseId, int FacultyId) {
+		courseDao.deleteUsingCIdAndFId(CourseId, FacultyId);
+	}
+	
 	public List<Course> getCoursesFromTeacherId(int teacherId) {
 		return courseDao.findByTeacherId(teacherId);
 	}

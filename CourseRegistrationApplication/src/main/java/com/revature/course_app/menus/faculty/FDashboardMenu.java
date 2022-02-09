@@ -43,7 +43,7 @@ public class FDashboardMenu extends Menu{
 				break;
 			case "2":
 				System.out.println("Remove courses selected:");
-				router.transfer("/s_remove_courses");
+				router.transfer("/f_remove_courses");
 				break;
 			case "3":
 				facultyService.logout();

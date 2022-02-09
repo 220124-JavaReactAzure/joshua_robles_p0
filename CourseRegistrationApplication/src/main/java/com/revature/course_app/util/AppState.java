@@ -12,13 +12,15 @@ import com.revature.course_app.menus.faculty.FDashboardMenu;
 import com.revature.course_app.menus.faculty.FHomeMenu;
 import com.revature.course_app.menus.faculty.FLoginMenu;
 import com.revature.course_app.menus.faculty.FRegistrationMenu;
+import com.revature.course_app.menus.faculty.courses.FAddCoursesMenu;
+import com.revature.course_app.menus.faculty.courses.FRemoveCoursesMneu;
 import com.revature.course_app.menus.student.SDashboardMenu;
 import com.revature.course_app.menus.student.SHomeMenu;
 import com.revature.course_app.menus.student.SLoginMenu;
 import com.revature.course_app.menus.student.SRegistrationMenu;
 import com.revature.course_app.menus.student.courses.SAddCoursesMenu;
 import com.revature.course_app.menus.student.courses.SEnrolledCoursesMenu;
-import com.revature.course_app.menus.student.courses.SRemoveCoursesMenu;
+import com.revature.course_app.menus.student.courses.SRemoveEnrolledMenu;
 import com.revature.course_app.menus.student.courses.SViewCoursesMenu;
 import com.revature.course_app.services.CourseService;
 import com.revature.course_app.services.EnrolledService;
@@ -56,13 +58,16 @@ public class AppState {
 		router.addMenu(new SDashboardMenu(consoleReader, router, studentService));
 		router.addMenu(new SViewCoursesMenu(consoleReader, router, studentService, courseService));
 		router.addMenu(new SAddCoursesMenu(consoleReader, router, studentService, courseService, enrolledService));
-		router.addMenu(new SRemoveCoursesMenu(consoleReader, router, studentService, enrolledService));
+		router.addMenu(new SRemoveEnrolledMenu(consoleReader, router, studentService, enrolledService));
 		router.addMenu(new SEnrolledCoursesMenu(consoleReader, router, studentService, enrolledService));
 
 		router.addMenu(new FHomeMenu(consoleReader, router));
 		router.addMenu(new FLoginMenu(consoleReader, router, facultyService));
 		router.addMenu(new FRegistrationMenu(consoleReader, router, facultyService));
 		router.addMenu(new FDashboardMenu(consoleReader, router, facultyService));
+		router.addMenu(new FAddCoursesMenu(consoleReader, router, facultyService, courseService));
+		router.addMenu(new FRemoveCoursesMneu(consoleReader, router, facultyService, courseService));
+		
 	}
 	
 	public void startup() {

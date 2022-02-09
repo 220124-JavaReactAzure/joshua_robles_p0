@@ -49,12 +49,12 @@ public class CourseDAO implements CrudDAO<Course> {
 				course.setCourseId(rs.getInt("course_id"));
 				course.setTeacherId(rs.getInt("faculty_id"));
 				course.setCourseName(rs.getString("course_name"));
-				
+
 				courseList.add(course);
 			}
-			
+
 			return courseList;
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -65,12 +65,12 @@ public class CourseDAO implements CrudDAO<Course> {
 	public Course create(Course newCourse) {
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-			String sql = "insert into course (course_id, faculty_id) values (?,?)";
+			String sql = "insert into course (faculty_id, course_name) values (?,?)";
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 
-			ps.setInt(1, newCourse.getCourseId());
-			ps.setInt(2, newCourse.getTeacherId());
+			ps.setInt(1, newCourse.getTeacherId());
+			ps.setString(2, newCourse.getCourseName());
 
 			int rowsInserted = ps.executeUpdate();
 
@@ -148,5 +148,33 @@ public class CourseDAO implements CrudDAO<Course> {
 	public boolean delete(String id) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	
+	//TODO not good logic and not safe guarding from other faculty access..
+	public boolean deleteUsingCIdAndFId(int courseId, int facultyId) {
+		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+			String sql = "delete from enrolled where course_id = ?";
+
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, courseId);
+
+			ps.executeUpdate();
+			
+			sql = "delete from course where course_id = ?";
+			
+			ps = conn.prepareStatement(sql);
+			
+			ps.setInt(1, courseId);
+			
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return true;
 	}
 }

@@ -10,11 +10,11 @@ import com.revature.course_app.services.EnrolledService;
 import com.revature.course_app.services.StudentService;
 import com.revature.course_app.util.MenuRouter;
 
-public class SRemoveCoursesMenu extends Menu {
+public class SRemoveEnrolledMenu extends Menu {
 	private final StudentService studentService;
 	private final EnrolledService enrolledService;
 
-	public SRemoveCoursesMenu(BufferedReader consoleReader, MenuRouter router, StudentService studentService,
+	public SRemoveEnrolledMenu(BufferedReader consoleReader, MenuRouter router, StudentService studentService,
 			EnrolledService enrolledService) {
 		super("SRemoveCourses", "/s_remove_courses", consoleReader, router);
 		this.studentService = studentService;
