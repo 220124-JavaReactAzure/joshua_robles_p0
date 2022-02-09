@@ -40,6 +40,13 @@ public class EnrolledService {
 		return true;
 	}
 	
+	public void removeEnrolled(Enrolled enrolled) {
+		if(!isEnrolledValid(enrolled)) {
+			throw new InvalidRequestException("Invalid enrolled data provided");
+		}
+		enrolledDao.delete(enrolled);
+	}
+	
 	public List<Enrolled> getAllEnrolled() {
 		return enrolledDao.findAll();
 	}

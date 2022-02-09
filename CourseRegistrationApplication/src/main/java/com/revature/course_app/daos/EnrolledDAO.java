@@ -123,10 +123,30 @@ public class EnrolledDAO implements CrudDAO<Enrolled> {
 		return false;
 	}
 
+	//TODO rework CrudDAO interface to avoid this
 	@Override
 	public boolean delete(String id) {
-		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	
+	public boolean delete(Enrolled enrolled) {
+		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+			String sql = "delete from enrolled where ? and ?";
+
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setInt(1, enrolled.getCourseId());
+			ps.setInt(2, enrolled.getStudentId());
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return true;
 	}
 
 }
