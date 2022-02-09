@@ -13,9 +13,16 @@ public class Faculty implements Serializable {
 		super();
 	}
 
+	// Probably can drop this overloaded method
 	public Faculty(String facultyId, String username, String password) {
 		super();
 		this.facultyId = facultyId;
+		this.username = username;
+		this.password = password;
+	}
+	
+	public Faculty(String username, String password) {
+		super();
 		this.username = username;
 		this.password = password;
 	}

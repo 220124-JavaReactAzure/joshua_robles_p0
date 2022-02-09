@@ -13,20 +13,20 @@ public class HomeMenu extends Menu {
 
 	@Override
 	public void render() throws Exception {
-		//TODO fill out the options for the application's requirements
-		System.out.print("Hello!\nWelcome to the course registration application.\n" +
-							"1) Login\n" +
-							"2) Register\n" +
+		System.out.print("Hello! Welcome to the course registration application.\n" +
+							"Are you a student or faculty?\n" +
+							"1) Student\n" +
+							"2) Faculty\n" +
 							"3) Exit\n");
 		
 		String userSelection = consoleReader.readLine();
 		
 		switch(userSelection) {
 		case "1":
-			router.transfer("/login");
+			router.transfer("/s_home");
 			break;
 		case "2":
-			router.transfer("/register");
+			router.transfer("/f_home");
 			break;
 		case "3":
 			shutdown();

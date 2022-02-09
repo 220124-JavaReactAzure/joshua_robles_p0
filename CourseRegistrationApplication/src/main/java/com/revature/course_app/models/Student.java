@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Student implements Serializable{
 	
 	// Could potentially generalize the accounts and just make the only difference being the title
-	private String studentId;
+	private int studentId;
 	private String username;
 	private String password;
 	
@@ -14,20 +14,26 @@ public class Student implements Serializable{
 		super();
 	}
 	
-	//Not sure if need a version without ID
-
-	public Student(String studentId, String username, String password) {
+	//Can probably get rid of this overloaded due to serial id in db
+	public Student(int studentId, String username, String password) {
 		super();
 		this.studentId = studentId;
 		this.username = username;
 		this.password = password;
 	}
+	
+	public Student(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
 
-	public String getStudentId() {
+	public int getStudentId() {
 		return studentId;
 	}
 
-	public void setStudentId(String studentId) {
+	//TODO make sure setStudentId isn't used to drop
+	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
 

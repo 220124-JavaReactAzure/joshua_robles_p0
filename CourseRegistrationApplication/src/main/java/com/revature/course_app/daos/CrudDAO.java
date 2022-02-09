@@ -7,7 +7,7 @@ public interface CrudDAO<T> {
 	T create(T newObject);
 	
 	ArrayList<T> findAll();
-	T findById(String id);
+	T findById(int id);
 	
 	boolean update(T updatedObj);
 	
