@@ -3,6 +3,8 @@ package com.revature.course_app.util;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
+
+import com.revature.course_app.util.logging.Logger;
 import com.revature.course_app.daos.CourseDAO;
 import com.revature.course_app.daos.EnrolledDAO;
 import com.revature.course_app.daos.FacultyDAO;
@@ -32,8 +34,13 @@ public class AppState {
 	
 	private static boolean isRunning;
 	private final MenuRouter router;
+	private final Logger logger;
 	
 	public AppState() {
+		
+		logger = Logger.getLogger(true);
+		logger.log("Application is starting up..");
+		
 		isRunning = true;
 		router = new MenuRouter();
 		BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in));
@@ -68,6 +75,7 @@ public class AppState {
 		router.addMenu(new FAddCoursesMenu(consoleReader, router, facultyService, courseService));
 		router.addMenu(new FRemoveCoursesMneu(consoleReader, router, facultyService, courseService));
 		
+		logger.log("Application has started up successfully!");
 	}
 	
 	public void startup() {

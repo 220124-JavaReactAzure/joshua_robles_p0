@@ -50,5 +50,9 @@ public class EnrolledService {
 	public List<Enrolled> getAllEnrolled() {
 		return enrolledDao.findAll();
 	}
+	
+	public List<Enrolled> getAllEnrolledByStudent(int id) {
+		return enrolledDao.findByStudentId(id);
+	}
 
 }

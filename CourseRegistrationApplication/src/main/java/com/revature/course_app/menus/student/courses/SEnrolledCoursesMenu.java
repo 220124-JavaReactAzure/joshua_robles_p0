@@ -37,7 +37,7 @@ public class SEnrolledCoursesMenu extends Menu {
 		while (studentService.isSessionActive()) {
 			System.out.println("Here are the current available courses:\n");
 			
-			ArrayList<Enrolled> enrolledList = (ArrayList<Enrolled>) enrolledService.getAllEnrolled();
+			ArrayList<Enrolled> enrolledList = (ArrayList<Enrolled>) enrolledService.getAllEnrolledByStudent(studentService.getSessionStudent().getStudentId());
 
 			for (int i = 0; i < enrolledList.size(); i++) {
 				System.out.println(enrolledList.get(i).toString());

@@ -10,14 +10,17 @@ import com.revature.course_app.services.CourseService;
 import com.revature.course_app.services.FacultyService;
 import com.revature.course_app.util.MenuRouter;
 import com.revature.course_app.util.collections.ArrayList;
+import com.revature.course_app.util.logging.Logger;
 
 public class FRemoveCoursesMneu extends Menu{
 	private final FacultyService facultyService;
 	private final CourseService courseService;
+	private final Logger logger;
 
 	public FRemoveCoursesMneu(BufferedReader consoleReader, MenuRouter router, FacultyService facultyService,
 			CourseService courseService) {
 		super("FRemoveCourses", "/f_remove_courses", consoleReader, router);
+		logger = Logger.getLogger(true);
 		this.facultyService = facultyService;
 		this.courseService = courseService;
 	}
@@ -51,6 +54,9 @@ public class FRemoveCoursesMneu extends Menu{
 			try {
 				courseService.removeCourseUsingCIdAndFId(Integer.parseInt(userSelection), 
 						facultyService.getSessionFaculty().getFacultyId());
+				
+				logger.log("Successfully removed course!\n");
+				
 				router.transfer("/f_dashboard");
 			} catch (InvalidRequestException e) {
 				System.out.println("Unable to remove the course..");
