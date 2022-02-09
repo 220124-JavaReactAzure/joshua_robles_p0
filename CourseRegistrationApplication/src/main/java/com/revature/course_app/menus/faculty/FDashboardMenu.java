@@ -52,6 +52,5 @@ public class FDashboardMenu extends Menu{
 				System.out.println("The user made an invalid selection");
 			}
 		}
-
 	}
 }
