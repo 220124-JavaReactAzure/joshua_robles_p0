@@ -36,7 +36,8 @@ public class CourseDAO implements CrudDAO<Course> {
 		return null;
 	}
 
-	public Course findByTeacherId(int teacher_id) {
+	public ArrayList<Course> findByTeacherId(int teacher_id) {
+		ArrayList<Course> courseList = new ArrayList<>();
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
 			String sql = "select * from course where faculty_id = ?";
@@ -49,9 +50,12 @@ public class CourseDAO implements CrudDAO<Course> {
 				course.setCourseId(rs.getInt("course_id"));
 				course.setTeacherId(rs.getInt("faculty_id"));
 				course.setCourseName(rs.getString("course_name"));
-
-				return course;
+				
+				courseList.add(course);
 			}
+			
+			return courseList;
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
