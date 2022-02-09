@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.revature.course_app.models.Course;
-import com.revature.course_app.models.Student;
 import com.revature.course_app.util.collections.ArrayList;
 import com.revature.course_app.util.datasource.ConnectionFactory;
 
